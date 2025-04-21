@@ -3,6 +3,7 @@ import "./globals.css";
 
 import AuthContextProvider from "@/lib/api-handler/auth-contex";
 import RecipeContexProvider from "@/lib/api-handler/recipeHandler";
+import AdminContexProvider from "@/lib/api-handler/adminHandler";
 import QouteHandlerProvider from "@/lib/api-handler/quoteHandler";
 import UserProviderHandler from "@/lib/api-handler/userHandler";
 import TaskManager from "@/lib/api-handler/tasksHandler";
@@ -31,15 +32,17 @@ export default function RootLayout({ children }) {
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <AuthContextProvider>
-          <UserProviderHandler>
-            <TaskManager>
-              <QouteHandlerProvider>
-                <ToastContainer />
-                <NavBar />
-                {children}
-              </QouteHandlerProvider>
-            </TaskManager>
-          </UserProviderHandler>
+          <AdminContexProvider>
+            <UserProviderHandler>
+              <TaskManager>
+                <QouteHandlerProvider>
+                  <ToastContainer />
+                  <NavBar />
+                  {children}
+                </QouteHandlerProvider>
+              </TaskManager>
+            </UserProviderHandler>
+          </AdminContexProvider>
         </AuthContextProvider>
       </body>
     </html>

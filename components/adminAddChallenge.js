@@ -2,43 +2,42 @@ import { useRef, useContext } from "react";
 import { recipeContex } from "@/lib/api-handler/recipeHandler";
 import { authContext } from "@/lib/api-handler/auth-contex";
 import { toast } from "react-toastify";
+import { adminContex } from "@/lib/api-handler/adminHandler";
 
-export default function AddRecipe() {
+export default function AddChallenge() {
   const titleRef = useRef();
   const descRef = useRef();
-  const linkRef = useRef();
+  const starCountRef = useRef();
+  const categoryRef = useRef();
 
   const { user } = useContext(authContext);
 
-  const { addPublicRecipe } = useContext(recipeContex);
+  const { addChallenge } = useContext(adminContex);
 
-  const addRecipeHandler = () => {
+  const addChallengeHandler = () => {
     const data = {
       title: titleRef.current.value,
       desc: descRef.current.value,
-      link: linkRef.current.value,
+      starCount: starCountRef.current.value,
+      category: categoryRef.current.value,
     };
-    const newRecipe = {
-      createdBy: "Admin",
-      uid: user.uid,
-      ...data,
-    };
-    addPublicRecipe(newRecipe);
-    toast.success(`Rescipe Added Successfully: ${data.title}`);
+    addChallenge(data);
+    toast.success(`Challenge Added Successfully: ${data.title}`);
     titleRef.current.value = "";
     descRef.current.value = "";
-    linkRef.current.value = "";
+    starCountRef.current.value = 0;
+    categoryRef.current.value = "daily";
   };
 
   return (
     <form
-      className="bg-blue-200 p-8 rounded-lg shadow-lg w-full max-w-md"
+      className="adminFormBg p-8 rounded-lg shadow-lg w-full max-w-md"
       onSubmit={(e) => {
         e.preventDefault();
-        addRecipeHandler();
+        addChallengeHandler();
       }}
     >
-      <h2 className="text-2xl font-bold mb-6 text-center">Add Recipe</h2>
+      <h2 className="text-2xl font-bold mb-6 text-center">Add Challenge</h2>
       <input
         className="inputs"
         type="text"
@@ -57,12 +56,20 @@ export default function AddRecipe() {
       <input
         className=" inputs"
         type="text"
-        name="link"
-        placeholder="Link"
-        ref={linkRef}
+        name="category"
+        placeholder="Category"
+        ref={categoryRef}
+      />
+      <input
+        className=" inputs"
+        type="number"
+        name="starCount"
+        placeholder="Star Count"
+        min={0}
+        ref={starCountRef}
       />
       <button
-        className="bg-blue-500 text-white py-2 px-4 rounded w-full hover:bg-blue-600"
+        className="adminSubmitButton text-white py-2 px-4 rounded w-full "
         type="submit"
       >
         Submit
