@@ -18,6 +18,7 @@
   --Mauve2: #c8b6ff;
   --Periwinkle: #b8c0ff;
   --Periwinkle2: #bbd0ff;
+  --Emerald: #57cc99;
 }
 
 @layer base {
@@ -145,6 +146,10 @@
   .completeChallengeBtn {
     @apply text-white px-4 py-2 rounded-lg transition flex;
     background-color: var(--Periwinkle2);
+  }
+  .isCompletedChallengeBtn {
+    @apply text-white px-4 py-2 rounded-lg transition inline-block;
+    background-color: var(--Mauve);
   }
   .completeChallengeBtn:hover {
     background-color: var(--Periwinkle);

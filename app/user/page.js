@@ -14,7 +14,6 @@ export default function UserHome() {
   if (!user) {
     return <h1 className="headers">Please Log In</h1>;
   }
-  console.log(1, dailyChallenges);
 
   return (
     <div>
@@ -25,6 +24,7 @@ export default function UserHome() {
           <span className="text-lg font-bold text-gray-800">{starCount}</span>
         </div>
       </div>
+      <h1 className="headers mt-4">Daily Tasks</h1>
       <div className="challenge-cards flex flex-wrap gap-10">
         {dailyChallenges && dailyChallenges.length > 0 ? (
           dailyChallenges.map((challenge) => (
@@ -33,6 +33,7 @@ export default function UserHome() {
               title={challenge.title}
               desc={challenge.desc}
               starAmmount={challenge.starCount}
+              category={challenge.category}
             />
           ))
         ) : (
