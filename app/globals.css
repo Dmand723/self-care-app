@@ -173,6 +173,7 @@
   .headers {
     @apply text-4xl font-bold text-center text-gray-800;
   }
+
   .cursor-love:hover {
     cursor: url("/love.ico"), pointer;
   }
@@ -208,5 +209,10 @@
 @media (max-width: 2090px) {
   .mainPage-body-container {
     @apply p-10 flex flex-col justify-start gap-10 mt-10;
+  }
+}
+@media (max-width: 1440px) {
+  .headers {
+    @apply text-4xl font-bold text-left text-gray-800 ml-4;
   }
 }
