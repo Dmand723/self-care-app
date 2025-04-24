@@ -22,6 +22,14 @@
   color: #f1faee;
   cursor: pointer;
 }
+.add-Todo_lable {
+  display: flex;
+  align-items: center;
+  margin: 40px 0;
+  font-size: 24px;
+  font-family: Lato, sans-serif;
+  color: #f1faee;
+}
 .todo-list .todo-list__label input[type="checkbox"] {
   opacity: 0;
   -webkit-appearance: none;
